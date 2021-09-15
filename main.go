@@ -4,9 +4,10 @@ import (
 	"log"
 
 	useController "myFirstApiWithGo/user"
- 	"github.com/joho/godotenv"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/joho/godotenv"
 )
 
 type User struct {
@@ -20,8 +21,8 @@ func main() {
 	app := fiber.New()
 	app.Use(cors.New())
 	//crea una ruta para el home
-	log.Println("Iniciando el servidor en el puerto 3000")
+	log.Println("Iniciando el servidor en el puerto 43760")
 	useController.UserController(app)
 	//esto hace que corra la app
-	log.Fatal(app.Listen(":8080"))
+	log.Fatal(app.Listen(":43760"))
 }
