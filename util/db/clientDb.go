@@ -3,19 +3,31 @@ package clientDb
 import (
 	"context"
 	"log"
+	"os"
 	"time"
 
 	structUser "myFirstApiWithGo/user/struct"
 
+	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
+func goDotEnvVariable(key string) string {
 
+	// load .env file
+	err := godotenv.Load(".env")
+  
+	if err != nil {
+	  log.Fatalf("Error loading .env file")
+	}
+  
+	return os.Getenv(key)
+  }
 func client() *mongo.Client {
 	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
 	defer cancel()
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI(goDotEnvVariable("MONGO_URI")))
 	if err != nil {
 		return nil
 	}
@@ -84,7 +96,7 @@ func Delete(name string, data interface{}) respose {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	result, err := collection.DeleteOne(ctx, bson.M{"name": data})
-	
+
 	if err != nil {
 		return respose{
 			"User not found",

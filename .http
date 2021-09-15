@@ -1,8 +1,8 @@
-DELETE http://localhost:8080/user/delete-user HTTP/1.1
+post http://localhost:8080/user/create-user HTTP/1.1
 content-type: application/json
 
 {
-    "Name":"alan",
-    "Email":"chan@pamsho.dev",
-    "Password":"1342"
+    "Name":"DSD",
+    "Email":"wafles@pamsho.dev",
+    "Password":"1234"
 }
