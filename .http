@@ -1,8 +1,1 @@
-post http://localhost:8080/user/create-user HTTP/1.1
-content-type: application/json
-
-{
-    "Name":"DSD",
-    "Email":"wafles@pamsho.dev",
-    "Password":"1234"
-}
+GET https://api-go-pamsho.herokuapp.com/user/get-user?user=alan HTTP/1.1
