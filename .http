@@ -1,2 +1,8 @@
-get http://localhost:8080/user/get-user  HTTP/1.1
+DELETE http://localhost:8080/user/delete-user HTTP/1.1
 content-type: application/json
+
+{
+    "Name":"alan",
+    "Email":"chan@pamsho.dev",
+    "Password":"1342"
+}
